@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +21,12 @@ public class CursosResponse {
 
     private String cargaHoraria;
 
-    public CursosResponse(String titulo, String cargaHoraria) {
+    private Set<AlunosRequest> alunos;
+
+
+
+    public CursosResponse(long id,String titulo,  String cargaHoraria) {
+        this.id=id;
         this.titulo = titulo;
         this.cargaHoraria = cargaHoraria;
     }

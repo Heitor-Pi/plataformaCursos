@@ -22,12 +22,17 @@ public class AlunosServices {
         this.cursosRepository = cursosRepository;
     }
 
-    public String criarAluno(AlunosRequest dto){
-        Alunos alunos = new Alunos();
-        alunos.setNome(dto.getNome());
-        alunos.setEmail(dto.getEmail());
+    public String criarAluno(AlunosRequest req) {
+        Alunos alunos = new Alunos(
+                req.getNome(),
+                req.getEmail()
+        );
+
+        Cursos cursos = cursosRepository.getReferenceById(req.getIdCursos());
+        alunos.getCursos().add(cursos);
+
         alunosRepository.save(alunos);
-        return "Usuario aluno criado com sucesso!!";
+        return "Aluno criado com sucesso!";
     }
 
     public List<AlunosResponse> mostrarAlunos(){

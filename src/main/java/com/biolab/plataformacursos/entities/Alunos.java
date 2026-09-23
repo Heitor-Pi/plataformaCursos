@@ -28,4 +28,9 @@ public class Alunos {
     joinColumns = @JoinColumn(name="alunos_id"),
     inverseJoinColumns = @JoinColumn(name="cursos_id"))
     private Set<Cursos> cursos =new HashSet<>();
+
+    public Alunos(@NotBlank String nome, @NotBlank @Email String email) {
+        this.nome = nome;
+        this.email = email;
+    }
 }
